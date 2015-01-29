@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :set_honeybadger_context
+                before_action       :set_honeybadger_context
   before_action :set_device_type
   before_action :set_layout_carrier
 
@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
     authenticate_user!
 
     unless current_user.super_admin?
-      redirect_to root_path, status: :forbidden, alert: "Unauthorized Access!"
+      redirect_to root_path, status: :forbidden,
+                                          alert: "Unauthorized Access!"
     end
   end
 
